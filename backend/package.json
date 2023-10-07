@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for the kairo project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SHADOW-LUCKY/Proyecto-Kairo.git"
+  },
+  "author": "SHADOW-LUCKY & Akio1102",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SHADOW-LUCKY/Proyecto-Kairo/issues"
+  },
+  "homepage": "https://github.com/SHADOW-LUCKY/Proyecto-Kairo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.1.0",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
