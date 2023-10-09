@@ -1,14 +1,338 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Proyect Kairo",
+    "title": "Proyecto Kairo",
     "version": "1.0.0",
-    "description": "Proyect Kairo API Documentation"
+    "description": "Proyecto Kairo API Documentation"
   },
   "servers": [
     {
       "url": "http://localhost:7563/api",
       "description": "Localhost Server for testing the API"
     }
-  ]
+  ],
+  "paths": {
+    "/Indicators/All": {
+      "get": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Obtener la lista de indicadores",
+        "description": "Este endpoint devuelve la lista de indicadores registrados.",
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "Proyecto A",
+                    "description": "Desarrollo de una aplicación web",
+                    "fecha_init": "2023-10-15",
+                    "fecha_end": "2024-03-30",
+                    "formula": "E = mc^2",
+                    "frecuency": "Semanal",
+                    "completation": 75,
+                    "area": "Tecnología"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontraron indicadores"
+          }
+        }
+      }
+    },
+    "/Indicators/New": {
+      "post": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Crear un nuevo indicador",
+        "description": "Este endpoint crea un nuevo indicador.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "fecha_init": {
+                    "type": "string"
+                  },
+                  "fecha_end": {
+                    "type": "string"
+                  },
+                  "formula": {
+                    "type": "string"
+                  },
+                  "frecuency": {
+                    "type": "string"
+                  },
+                  "completation": {
+                    "type": "number"
+                  },
+                  "area": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Indicador creado con éxito"
+          },
+          "400": {
+            "description": "Datos de indicador no válidos"
+          }
+        }
+      }
+    },
+    "/Indicators/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Eliminar un Indicador",
+        "description": "Este endpoint elimina un indicador por su ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del usuario a eliminar",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Indicador no encontrado"
+          }
+        }
+      }
+    },
+    "/Indicators/Update/{id}": {
+      "put": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Actualizar un Indicador",
+        "description": "Este endpoint actualiza los datos de un indicador existente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del indicador a actualizar",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "fecha_init": {
+                    "type": "string"
+                  },
+                  "fecha_end": {
+                    "type": "string"
+                  },
+                  "formula": {
+                    "type": "string"
+                  },
+                  "frecuency": {
+                    "type": "string"
+                  },
+                  "completation": {
+                    "type": "number"
+                  },
+                  "area": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Datos de indicador no válidos"
+          }
+        }
+      },
+      "paths": null
+    },
+    "/Users/All": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Obtener la lista de usuarios",
+        "description": "Este endpoint devuelve la lista de usuarios registrados.",
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "completeName": "jose alvarez",
+                    "rol": "admin",
+                    "img_profile": "xd",
+                    "user": "jose",
+                    "password": "*******"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontraron usuarios"
+          }
+        }
+      }
+    },
+    "/Users/New": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Crear un nuevo usuario",
+        "description": "Este endpoint crea un nuevo usuario.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "completeName": {
+                    "type": "string"
+                  },
+                  "rol": {
+                    "type": "string"
+                  },
+                  "img_profile": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "usuario creado con éxito"
+          },
+          "400": {
+            "description": "Datos de usuario no válidos"
+          }
+        }
+      }
+    },
+    "/Users/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Eliminar un Usuario",
+        "description": "Este endpoint elimina un usuario por su ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del usuario a eliminar",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "usuario no encontrado"
+          }
+        }
+      }
+    },
+    "/Users/Update/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Actualizar un Usuario",
+        "description": "Este endpoint actualiza los datos de un usuario existente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del usuario a actualizar",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "completeName": {
+                    "type": "string"
+                  },
+                  "rol": {
+                    "type": "string"
+                  },
+                  "img_profile": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Datos de indicador no válidos"
+          }
+        }
+      }
+    }
+  }
 }
