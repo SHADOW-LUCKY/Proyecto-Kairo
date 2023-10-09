@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "backend for the kairo project ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js"
   },
   "repository": {
     "type": "git",
@@ -17,12 +19,15 @@
   },
   "homepage": "https://github.com/SHADOW-LUCKY/Proyecto-Kairo#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "mongodb": "^6.1.0",
-    "morgan": "^1.10.0",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0"
+    "cors": "2.8.5",
+    "dotenv": "16.3.1",
+    "express": "4.18.2",
+    "mongodb": "6.1.0",
+    "morgan": "1.10.0",
+    "swagger-jsdoc": "6.2.8",
+    "swagger-ui-express": "5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "3.0.1"
   }
 }
