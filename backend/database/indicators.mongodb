@@ -1,0 +1,32 @@
+db.indicators.insertMany([
+  {
+    name: "Proyecto A",
+    description: "Desarrollo de una aplicación web",
+    fecha_init: "2023-10-15",
+    fecha_end: "2024-03-30",
+    formula: "E = mc^2",
+    frecuency: "Semanal",
+    completation: 75,
+    area: "Tecnología",
+  },
+  {
+    name: "Proyecto B",
+    description: "Investigación científica",
+    fecha_init: "2023-11-01",
+    fecha_end: "2024-06-15",
+    formula: "A = πr^2",
+    frecuency: "Mensual",
+    completation: 45,
+    area: "Ciencia",
+  },
+  {
+    name: "Proyecto C",
+    description: "Diseño de producto",
+    fecha_init: "2024-01-10",
+    fecha_end: "2024-08-20",
+    formula: "F = ma",
+    frecuency: "Diaria",
+    completation: 60,
+    area: "Diseño",
+  },
+]);
