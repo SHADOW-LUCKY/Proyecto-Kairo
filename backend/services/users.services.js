@@ -106,19 +106,19 @@ export const loginUser = async (userData) => {
     const db = await DBconnection();
     const User = db.collection("users");
 
-    const userFound = await User.find({ user }).toArray();
+    const userFound = await User.findOne({ user });
 
-    if (!userFound[0]) {
+    if (!userFound) {
       throw new Error(`User Not Found`);
     }
 
-    const isPasswordValid = comparePasswords(password, userFound[0].password);
+    const isPasswordValid = comparePasswords(password, userFound.password);
 
     if (!isPasswordValid) {
       throw new Error(`Wrong Password`);
     }
 
-    const token = await createToken(userFound[0]._id);
+    const token = await createToken(userFound._id);
     return token
       ? {
           msg: "Token Created",
