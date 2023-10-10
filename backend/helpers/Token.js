@@ -24,7 +24,7 @@ export const createToken = async (id) => {
   }
 };
 
-export const verifyToken = async (token) => {
+export const verifyJWT = async (token) => {
   try {
     const { payload } = await jwtVerify(token, encoder.encode(PRIVATE.KEY));
     return payload;

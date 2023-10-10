@@ -1,4 +1,4 @@
-import { verifyToken } from "../helpers/Token.js";
+import { verifyJWT } from "../helpers/Token.js";
 
 export const authRequired = async (req, res, next) => {
   try {
@@ -9,8 +9,7 @@ export const authRequired = async (req, res, next) => {
         .status(401)
         .json({ message: "No token, authorization denied" });
     }
-
-    const compared = await verifyToken(token);
+    const compared = await verifyJWT(token.token);
     if (!compared) {
       return res
         .status(401)
@@ -19,6 +18,6 @@ export const authRequired = async (req, res, next) => {
     req.user = compared;
     next();
   } catch (error) {
-    return res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ error: error.message });
   }
 };
