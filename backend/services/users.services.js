@@ -84,7 +84,7 @@ export const updateUser = async (id, userData) => {
 export const deleteUser = async (id) => {
   try {
     const db = await DBconnection();
-    const deleteOneUser = await db.collection("users<").deleteOne({
+    const deleteOneUser = await db.collection("users").deleteOne({
       _id: new ObjectId(id),
     });
     return deleteOneUser.acknowledged
@@ -121,7 +121,6 @@ export const loginUser = async (userData) => {
     const token = await createToken(userFound._id);
     return token
       ? {
-          msg: "Token Created",
           token,
         }
       : {

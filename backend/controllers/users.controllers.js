@@ -30,7 +30,7 @@ export const CreateNewUser = async (req, res) => {
   try {
     const UserData = getRequestBody(req);
     const userNew = await UsersServices.createUser(UserData);
-    sendSuccessResponse(res, userNew);
+    sendSuccessResponse(res, userNew.msg, userNew.status);
   } catch (error) {
     sendErrorResponse(res, error);
   }
@@ -50,11 +50,9 @@ export const UpdateOneUser = async (req, res) => {
 export const DeleteOneUser = async (req, res) => {
   try {
     const Id = getRequestId(req);
-    const allUsers = await UsersServices.deleteUser(Id);
-    res.cookie("token", "", {
-      expires: new Date(0),
-    });
-    sendSuccessResponse(res, allUsers);
+    console.log(Id);
+    const deleteUser = await UsersServices.deleteUser(Id);
+    sendSuccessResponse(res, deleteUser);
   } catch (error) {
     sendErrorResponse(res, error);
   }
