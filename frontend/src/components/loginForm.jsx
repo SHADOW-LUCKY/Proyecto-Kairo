@@ -22,7 +22,7 @@ export default function loginForm() {
 			    <input type="text" class="mt-1 border-solid border text-2xl text-black border-black p-1 w-full rounded-xl bg-white border-spacing-1" />
 		    </div>
             <div className='mt-5 mx-auto text-center'>
-                <button className='p-4 rounded-full w-80 bg-orange-500' onClick={() => { window.location.href = '/success'}} >Ingresar</button>
+                <button className='p-4 rounded-full w-3/4  md:w-80 bg-orange-500' onClick={() => { window.location.href = '/success'}} >Ingresar</button>
                 <p className='text-center text-black mt-5 text-sm font-thin'>Tienes problemas para ingresar? Por favor contactarse con asistencia técnica lo más pronto posible</p>
             </div>
         </div>
