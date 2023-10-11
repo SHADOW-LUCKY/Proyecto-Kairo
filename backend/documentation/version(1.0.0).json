@@ -328,7 +328,7 @@
         },
         "responses": {
           "400": {
-            "description": "Datos de indicador no válidos"
+            "description": "Datos de usuario no válidos"
           }
         }
       }
