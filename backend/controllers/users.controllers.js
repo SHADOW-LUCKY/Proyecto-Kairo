@@ -26,6 +26,16 @@ export const GetAllUsers = async (req, res) => {
   }
 };
 
+export const GetOneUser = async (req, res) => {
+  try {
+    const Id = getRequestId(req);
+    const oneUser = await UsersServices.getOneUser(Id);
+    sendSuccessResponse(res, oneUser);
+  } catch (error) {
+    sendErrorResponse(res, error);
+  }
+};
+
 export const CreateNewUser = async (req, res) => {
   try {
     const UserData = getRequestBody(req);
@@ -62,8 +72,8 @@ export const Login = async (req, res) => {
   try {
     const UserData = getRequestBody(req);
     const login = await UsersServices.loginUser(UserData);
-    res.cookie("token", login);
-    sendSuccessResponse(res, "Successful login");
+    res.cookie("token", login.token);
+    sendSuccessResponse(res, login.user);
   } catch (error) {
     sendErrorResponse(res, error);
   }

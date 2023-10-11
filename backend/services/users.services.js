@@ -22,6 +22,27 @@ export const getUsers = async () => {
   }
 };
 
+export const getOneUser = async (id) => {
+  try {
+    const db = await DBconnection();
+    const user = await db
+      .collection("users")
+      .findOne({ _id: new ObjectId(id) });
+
+    return user
+      ? {
+          msg: "Users found",
+          data: user,
+        }
+      : {
+          msg: "No Users",
+          status: 404,
+        };
+  } catch (error) {
+    throw new Error(`Server Error: ${error.message}`);
+  }
+};
+
 export const createUser = async (userData) => {
   try {
     const { user, password } = userData;
@@ -122,6 +143,7 @@ export const loginUser = async (userData) => {
     return token
       ? {
           token,
+          user: userFound,
         }
       : {
           msg: "Missing data",

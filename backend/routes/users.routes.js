@@ -7,6 +7,7 @@ import * as UsersControllers from "../controllers/users.controllers.js";
 const ROUTER = Router();
 
 export default ROUTER.get("/All", authRequired, UsersControllers.GetAllUsers)
+  .get("/:Id", authRequired, UsersControllers.GetOneUser)
   .post("/New", validateSchema(UserSchema), UsersControllers.CreateNewUser)
   .put(
     "/Update/:Id",
