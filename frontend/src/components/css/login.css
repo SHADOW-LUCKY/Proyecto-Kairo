@@ -5,3 +5,19 @@
 .bglogin{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bglogin.jpg');
 }
+.LBORDER{
+    border: solid 1px black;
+    border-right: 0px;
+    border-radius: 100px 0px 0px 100px;
+   
+}
+.RBORDER{
+    border: solid 1px black;
+    border-left: 0px;
+    border-radius: 0px 100px 100px 0px;
+}
+
+.BORDER{
+    border-bottom: solid 1px black;
+    border-top: solid 1px black;
+}
