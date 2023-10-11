@@ -181,8 +181,7 @@
             "description": "Datos de indicador no válidos"
           }
         }
-      },
-      "paths": null
+      }
     },
     "/Users/All": {
       "get": {
@@ -330,6 +329,149 @@
         "responses": {
           "400": {
             "description": "Datos de indicador no válidos"
+          }
+        }
+      }
+    },
+    "/Reports/All": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Obtener la lista Reportes",
+        "description": "Este endpoint devuelve la lista de reportes registrados.",
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "user_id": 621212312312,
+                    "indicator_id": 6412312312123,
+                    "description": "una pequeña descripcion",
+                    "fecha_expedited": "12-21-12"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontraron Reportes"
+          }
+        }
+      }
+    },
+    "/Reports/New": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Crear un nuevo Reporte",
+        "description": "Este endpoint crea un nuevo reporte.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "indicator_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "fecha_expedited": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Reporte creado con éxito"
+          },
+          "400": {
+            "description": "Datos de reporte no válidos"
+          }
+        }
+      }
+    },
+    "/Reports/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Eliminar un reporte",
+        "description": "Este endpoint elimina un reporte por su ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del reporte a eliminar",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "reporte no encontrado"
+          }
+        }
+      }
+    },
+    "/Reports/Update/{id}": {
+      "put": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Actualizar un Reporte",
+        "description": "Este endpoint actualiza los datos de un reporte existente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del reporte a actualizar",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "indicator_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "fecha_expedited": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Datos de reporte no válidos"
           }
         }
       }
