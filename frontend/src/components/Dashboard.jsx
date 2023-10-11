@@ -10,6 +10,7 @@ import {Gear} from '@styled-icons/evil/Gear'
 import {BellRing} from '@styled-icons/boxicons-solid/BellRing'
 /* components */
 import DashboardMenuList from './DashboardMenuList';
+import DashboardGetAll from './DashboardGetAll';
 
 
 /* function */
@@ -36,7 +37,7 @@ export default function Dashboard() {
                       <PlusCircleFill size={25} color='#FF7221'/>
                       <p className='ml-2'>Añadir</p>
                     </div>
-                    <div className='text-center text-black text-xl cursor-pointer py-3 my-auto flex'>
+                    <div className='text-center text-black text-xl cursor-pointer py-3 my-auto flex' onClick={() =>{window.location.reload()}}>
                       <Refresh size={25} color='#FF7221'/>
                       <p className='ml-2'>Refrescar</p>
                     </div>
@@ -64,14 +65,15 @@ export default function Dashboard() {
                     <BellRing size={20} color='#FF7221'/>
                   </div>
                   <div className='mr-5 my-auto'>
-                    
-                    <div className="popover">
-                      <label className="popover-trigger my-2 " tabIndex="0"><img src='https://media.licdn.com/dms/image/C4E03AQGO448nAOrvfw/profile-displayphoto-shrink_800_800/0/1516929468945?e=2147483647&v=beta&t=d5P5hoCOyufB3Qkq935Dn4jIIpyoMVX_FweqCM3erjE' alt="..." className='w-9 rounded-full' /></label>
-                      <div className="popover-content popover-bottom-left bg-slate-400" tabIndex="0">
-                        <div className="popover-arrow bg-slate-400 border"></div>
-                        <div className="p-4 text-sm text-black">And here's some amazing content. It's very engaging. Right?</div>
+                  <div className="popover">
+                    <label className="popover-trigger my-2 " tabIndex="0"><img src='https://media.licdn.com/dms/image/C4E03AQGO448nAOrvfw/profile-displayphoto-shrink_800_800/0/1516929468945?e=2147483647&v=beta&t=d5P5hoCOyufB3Qkq935Dn4jIIpyoMVX_FweqCM3erjE' alt="..." className='w-9 rounded-full' /></label>
+                    <div className="popover-content popover-bottom-left bg-slate-400" tabIndex="0">
+                      <div className="popover-arrow bg-slate-400 border"></div>
+                      <div className="p-4 text-sm text-black text-center">
+                      <button class="btn ">Logout</button>
                       </div>
                     </div>
+                  </div>
                   </div>
               </div>
             
@@ -79,17 +81,38 @@ export default function Dashboard() {
         
   
         <div className={`${!open && "hidden"} bg-gray-600/50 min-h-screen w-full fixed top-0 left-0 right-0 backdrop-blur-sm`} onClick={() => setOpen(false)}></div>
-  
         <div className={`${open ? "w-80" : "w-0"} bg-white  min-h-screen fixed top-0 left-0 transition-all duration-300`}>
-          <div className={`${!open && "hidden"} pt-3`}>
-            <button className='ml-4  text-black mb-14' onClick={() => setOpen(false)}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          <div className={`${!open && "hidden"} mt-3`}>
+            <div className='flex justify-between mb-14'>
+              <button className='ml-4  text-black ' onClick={() => setOpen(false)}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className='flex flex-row '>
+                <div className='mr-2 my-auto'>
+                    <Gear size={20} color='#FF7221'/>
+                </div>
+                <div className='mr-2 my-auto'>
+                    <BellRing size={20} color='#FF7221'/>
+                </div>
+                <div className='mr-5 my-auto'>
+                  <div className="popover">
+                    <label className="popover-trigger my-2 " tabIndex="0"><img src='https://media.licdn.com/dms/image/C4E03AQGO448nAOrvfw/profile-displayphoto-shrink_800_800/0/1516929468945?e=2147483647&v=beta&t=d5P5hoCOyufB3Qkq935Dn4jIIpyoMVX_FweqCM3erjE' alt="..." className='w-9 rounded-full' /></label>
+                    <div className="popover-content popover-bottom-left bg-slate-400" tabIndex="0">
+                      <div className="popover-arrow bg-slate-400 border"></div>
+                      <div className="p-4 text-sm text-black text-center">
+                      <button class="btn ">Logout</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <DashboardMenuList/>
           </div>
         </div>
+        <DashboardGetAll/>
       </div>
       </div>
     )
