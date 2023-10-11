@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { getOneUserRequest } from "../api/User.js";
 /* imports */
 import kairo from "../assets/kairo.png";
@@ -15,12 +16,18 @@ export default function AuthSuccess() {
     queryFn: ({ queryKey }) => getOneUserRequest(queryKey[1]),
     refetchOnWindowFocus: false,
   });
+  const navigate = useNavigate();
+
 
   if (isLoading) {
     return <div className="text-3xl">Loading....</div>;
   } else if (isError) {
     <div>Error: {error.message}</div>;
   }
+
+  setTimeout(() => {
+      navigate("/dashboard");
+  },5000)
 
   return (
     <div className="bglogin h-screen w-full flex justify-center ">

@@ -22,7 +22,7 @@ export default function DashboardMenuList() {
       opts.map((item, index) => {
        return  <div key={index} className=' text-black text-xl py-3 my-auto flex justify-center '>
         {comp[index]}
-        <p className='ml-2'>{item}</p>
+        <p className='ml-2'>{item === 'Añadir'? <label htmlFor="anadir">Añadir</label> : item}</p>
         </div>
       })
   )

@@ -11,7 +11,7 @@ import {BellRing} from '@styled-icons/boxicons-solid/BellRing'
 /* components */
 import DashboardMenuList from './DashboardMenuList';
 import DashboardGetAll from './DashboardGetAll';
-
+import DashboardAddModal from './DashboardAddModal';
 
 /* function */
 export default function Dashboard() {
@@ -35,7 +35,7 @@ export default function Dashboard() {
               <div className='flex w-9/12 h-full justify-between '>
                     <div className='text-center text-black text-xl cursor-pointer py-3 my-auto flex'>
                       <PlusCircleFill size={25} color='#FF7221'/>
-                      <p className='ml-2'>Añadir</p>
+                      <p className='ml-2'><label htmlFor="anadir">Añadir</label></p>
                     </div>
                     <div className='text-center text-black text-xl cursor-pointer py-3 my-auto flex' onClick={() =>{window.location.reload()}}>
                       <Refresh size={25} color='#FF7221'/>
@@ -70,7 +70,7 @@ export default function Dashboard() {
                     <div className="popover-content popover-bottom-left bg-slate-400" tabIndex="0">
                       <div className="popover-arrow bg-slate-400 border"></div>
                       <div className="p-4 text-sm text-black text-center">
-                      <button class="btn ">Logout</button>
+                      <button className="btn ">Logout</button>
                       </div>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ export default function Dashboard() {
                     <div className="popover-content popover-bottom-left bg-slate-400" tabIndex="0">
                       <div className="popover-arrow bg-slate-400 border"></div>
                       <div className="p-4 text-sm text-black text-center">
-                      <button class="btn ">Logout</button>
+                      <button className="btn ">Logout</button>
                       </div>
                     </div>
                   </div>
@@ -114,6 +114,7 @@ export default function Dashboard() {
         </div>
         <DashboardGetAll/>
       </div>
+        <DashboardAddModal/>
       </div>
     )
 }

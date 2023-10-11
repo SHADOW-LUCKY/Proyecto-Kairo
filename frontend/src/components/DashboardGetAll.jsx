@@ -1,6 +1,9 @@
 import React from 'react'
-import {Bars} from '@styled-icons/fa-solid/Bars'
+import Dashboardmap from './Dashboardmap'
+
 export default function DashboardGetAll() {
+
+/* return */
   return (
     <div >
         <div className='text-center text-black mt-5'>
@@ -9,53 +12,33 @@ export default function DashboardGetAll() {
         </div>
         <div className="flex flex-col overflow-x-auto">
         <div className="text-black">
-            <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div className="inline-block min-w-full px-8">
             <div className="overflow-x-auto">
-                    <table className="w-full">
-                        <thead>
-                            <th className="px-6 py-4">Indicador</th>
-                            <th className="px-6 py-4">Descripción</th>
-                            <th className="px-6 py-4">Categoria</th>
-                            <th className="px-6 py-4">Fecha de Inicio</th>
-                            <th className="px-6 py-4">Fecha de Terminación </th>
-                            <th className="px-6 py-4">Fórmula</th>
-                            <th className="px-6 py-4">Frecuencia</th>
-                            <th className="px-6 py-4">Cumplimiento </th>  
-                            <th className="px-6 py-4">Área</th>
-                            <th className="px-6 py-4"></th>
-                        </thead>
-                    </table>
-                
-                
-                
-                    
-                
-                <div className="w-full flex justify-between">
-                        <div className ="LBORDER">
-                            <div className=" px-6 py-4">Cell</div>
-                        </div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className="w-full BORDER px-6 py-4">Cell</div>
-                        <div className ="RBORDER">
-                            <div className="  px-6 py-4">Cell</div>
-                        </div>
-                        <div className=" px-6 py-4"><Bars size={24} color='#000000'/></div>
-                    </div>
-               
+                <table className="w-full ">
+                  <thead >
+                      <th><div className="py-4">Indicador</div></th>    
+                      <th><div className="py-4">Descripción</div></th>    
+                      <th><div className="py-4">Fecha de Inicio</div></th>    
+                      <th><div className="py-4">Fecha de Terminación </div></th>    
+                      <th><div className="py-4">Fórmula</div></th>    
+                      <th><div className="py-4">Frecuencia</div></th>    
+                      <th><div className="py-4">Cumplimiento </div></th>    
+                      <th><div className="py-4">Área</div></th>    
+                       
+                  </thead>
+                  <tbody className='getall'>
+                      <Dashboardmap /> 
+                  </tbody>
+                </table>
             </div>
-            </div>
+        </div>
         </div>
         </div>
     </div>
   )
 }
 
-/* 
+/*
 Indicador
 Descripción
 Categoria

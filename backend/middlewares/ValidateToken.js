@@ -9,7 +9,7 @@ export const authRequired = async (req, res, next) => {
         .status(401)
         .json({ message: "No token, authorization denied" });
     }
-    const compared = await verifyJWT(token.token);
+    const compared = await verifyJWT(token);
     if (!compared) {
       return res
         .status(401)

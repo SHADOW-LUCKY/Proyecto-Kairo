@@ -28,7 +28,7 @@ export default function LoginForm() {
 
   return (
     <div className="h-screen w-full flex justify-center animate-fade-up animate-ease-in">
-      <div className=" w-3/6 lg:w-5/12 self-center bg-white rounded-2xl flex flex-col px-10 py-5">
+      <div className="w-11/12  md:w-3/6 lg:w-5/12 self-center bg-white rounded-2xl flex flex-col px-10 py-5">
         <div>
           <img src={kairo} alt="..." className="w-3/12 md:w-28 mx-auto" />
           <h1 className="text-center text-black text-lg font-thin">MEDIA</h1>
