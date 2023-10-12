@@ -8,6 +8,7 @@ const getRequestBody = (req) => {
   const {
     name,
     description,
+    category,
     fecha_init,
     fecha_end,
     formula,
@@ -18,6 +19,7 @@ const getRequestBody = (req) => {
   return {
     name,
     description,
+    category,
     fecha_init,
     fecha_end,
     formula,

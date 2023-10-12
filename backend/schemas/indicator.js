@@ -8,6 +8,9 @@ export const IndicatorSchema = z.object({
   description: z
     .string({ required_error: "Description is Required" })
     .nullable(false),
+  category: z
+    .string({ required_error: "Category is Required" })
+    .nullable(false),
   fecha_init: z
     .string({ required_error: "Fecha_Init is Required" })
     .nullable(false),
