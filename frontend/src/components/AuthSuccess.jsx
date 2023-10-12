@@ -1,33 +1,44 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { getOneUserRequest } from "../api/User.js";
+import Cookies from "js-cookie";
 /* imports */
 import kairo from "../assets/kairo.png";
 /* css */
 import "./css/login.css";
 export default function AuthSuccess() {
+  const token = Cookies.get("token");
+  const userId = token ? JSON.parse(atob(token.split(".")[1]))?.id : null;
+
   const {
     isLoading,
     data: user,
     isError,
     error,
   } = useQuery({
-    queryKey: ["user", "6525507c635253283592eec5"],
+    queryKey: ["user", userId],
     queryFn: ({ queryKey }) => getOneUserRequest(queryKey[1]),
     refetchOnWindowFocus: false,
   });
   const navigate = useNavigate();
 
-
   if (isLoading) {
-    return <div className="text-3xl">Loading....</div>;
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <div className="text-3xl">Loading....</div>
+      </div>
+    );
   } else if (isError) {
-    <div>Error: {error.message}</div>;
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <div>Error: {error.message}</div>
+      </div>
+    );
   }
 
   setTimeout(() => {
-      navigate("/dashboard");
-  },5000)
+    navigate("/dashboard");
+  }, 5000);
 
   return (
     <div className="bglogin h-screen w-full flex justify-center ">

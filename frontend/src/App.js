@@ -5,6 +5,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Login from "./components/login.jsx";
 import AuthSuccess from "./components/AuthSuccess.jsx";
 import Dashboard from "./components/Dashboard.jsx";
+import Reports from "./components/Reports.jsx";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/success" element={<AuthSuccess />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/reports" element={<Reports />} />
             </Route>
           </Routes>
         </BrowserRouter>

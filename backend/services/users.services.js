@@ -143,7 +143,6 @@ export const loginUser = async (userData) => {
     return token
       ? {
           token,
-          user: userFound,
         }
       : {
           msg: "Missing data",
