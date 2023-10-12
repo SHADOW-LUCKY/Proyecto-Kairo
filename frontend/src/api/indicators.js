@@ -9,3 +9,19 @@ export const getIndicators = async () => {
     throw new Error(`Error: ${error.message}`);
   }
 };
+
+export const postIndicatorsRequest = async (indicator) => {
+  try {
+    await axios.post("/Indicators/New", indicator);
+  } catch (error) {
+    throw new Error(`Error: ${error.message}`);
+  }
+};
+
+export const deleteIndicatorsRequest = async (id) => {
+  try {
+    await axios.delete(`/Indicators/Delete/${id}`);
+  } catch (error) {
+    throw new Error(`Error: ${error.message}`);
+  }
+};
