@@ -14,8 +14,9 @@ import DashboardMenuList from "./DashboardMenuList";
 import BodyReports from "./BodyReports.jsx";
 import {useAuth} from "../contexts/AuthContext";
 
-export default function Reports() {
-  const navigate = useNavigate();
+
+export default function Help() {
+    const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const { deleter, setDelete } = useAuth();
   return (
@@ -59,10 +60,6 @@ export default function Reports() {
               >
                 <Refresh size={25} color="#FF7221" />
                 <p className="ml-2">Refrescar</p>
-              </div>
-              <div className="text-center text-black text-xl cursor-pointer py-3 my-auto flex" onClick={() => { setDelete(!deleter) }}>
-                <DeleteForever size={30} color="#FF7221" />
-                <p className="ml-2">Eliminar</p>  
               </div>
               <div className="h-full my-auto">
                 <img src={kairo} alt="..." className="w-9" />
@@ -184,21 +181,11 @@ export default function Reports() {
           </p>
         </div>
         <div className="pt-10 flex w-full overflow-x-auto">
-          <table className="table-zebra table px-20">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Usuario</th>
-                <th>Indicador</th>
-                <th>Descripcion</th>
-                <th>Fecha</th>
-                {deleter?(<th></th>):null}
-              </tr>
-            </thead>
-            <BodyReports />
-          </table>
+         
+           
+        
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -6,6 +6,7 @@ import Login from "./components/login.jsx";
 import AuthSuccess from "./components/AuthSuccess.jsx";
 import Dashboard from "./components/Dashboard.jsx";
 import Reports from "./components/Reports.jsx";
+import Help from "./components/Help.jsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ function App() {
               <Route path="/success" element={<AuthSuccess />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/reports" element={<Reports />} />
+              <Route path="/help" element={<Help />} />
             </Route>
           </Routes>
         </BrowserRouter>
