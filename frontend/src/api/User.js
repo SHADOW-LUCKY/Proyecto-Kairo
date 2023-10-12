@@ -17,3 +17,12 @@ export const getOneUserRequest = async (id) => {
     throw new Error(`Error: ${error.message}`);
   }
 };
+
+export const getUsersRequest = async () => {
+  try {
+    const res = await axios.get(`/Users/All`);
+    return res.data.data;
+  } catch (error) {
+    throw new Error(`Error: ${error.message}`);
+  }
+};

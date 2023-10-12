@@ -1,13 +1,9 @@
 import { z } from "zod";
 
 export const ReportSchema = z.object({
-  user_id: z
-    .string({ required_error: "User_id is Required" })
-    .uuid({ message: "Invalid User_id" })
-    .nullable(false),
+  user_id: z.string({ required_error: "User_id is Required" }).nullable(false),
   indicators_id: z
     .string({ required_error: "Indicators_id is Required" })
-    .uuid({ message: "Invalid Indicators_id" })
     .nullable(false),
   description: z
     .string({ required_error: "Description is Required" })
@@ -15,5 +11,6 @@ export const ReportSchema = z.object({
     .nullable(false),
   fecha_expedited: z
     .string({ required_error: "Fecha_Expedited is Required" })
+    .datetime({ required_error: "Invalid Fecha_Expedited" })
     .nullable(false),
 });

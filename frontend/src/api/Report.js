@@ -10,6 +10,14 @@ export const getReportsRequest = async () => {
   }
 };
 
+export const postReportRequest = async (report) => {
+  try {
+    await axios.post("/Reports/New", report);
+  } catch (error) {
+    throw new Error(`Error: ${error.message}`);
+  }
+};
+
 export const deleteReportRequest = async (id) => {
   try {
     await axios.delete(`/Reports/Delete/${id}`);

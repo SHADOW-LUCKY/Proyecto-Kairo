@@ -3,22 +3,24 @@ import { useNavigate } from "react-router-dom";
 
 import kairo from "../assets/kairo.png";
 import { HelpCircle } from "@styled-icons/boxicons-solid/HelpCircle";
-import { BugReport } from "@styled-icons/material-sharp/BugReport";
-import { DeleteForever } from "@styled-icons/material/DeleteForever";
 import { Refresh } from "@styled-icons/evaicons-solid/Refresh";
-import { PlusCircleFill } from "@styled-icons/bootstrap/PlusCircleFill";
 import { Gear } from "@styled-icons/evil/Gear";
 import { BellRing } from "@styled-icons/boxicons-solid/BellRing";
-import {AppIndicator} from'@styled-icons/bootstrap/AppIndicator'
+import { AppIndicator } from "@styled-icons/bootstrap/AppIndicator";
 import DashboardMenuList from "./DashboardMenuList";
-import BodyReports from "./BodyReports.jsx";
-import {useAuth} from "../contexts/AuthContext";
-
+import Cookies from "js-cookie";
 
 export default function Help() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const { deleter, setDelete } = useAuth();
+  const handleLogout = () => {
+    try {
+      Cookies.remove("token");
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
   return (
     <div className="w-full h-screen bg-white text-black">
       <div>
@@ -66,7 +68,9 @@ export default function Help() {
               </div>
               <div className="text-center text-black text-xl cursor-pointer py-3 my-auto flex">
                 <HelpCircle size={32} color="#FF7221" />
-                <p className="ml-2" onClick={() => navigate("/help")}>Ayuda</p>
+                <p className="ml-2" onClick={() => navigate("/help")}>
+                  Ayuda
+                </p>
               </div>
             </div>
             <div className="flex w-2/12 h-14 justify-end ">
@@ -91,7 +95,14 @@ export default function Help() {
                   >
                     <div className="popover-arrow bg-slate-400 border"></div>
                     <div className="p-4 text-sm text-black text-center">
-                      <button className="btn ">Logout</button>
+                      <button
+                        className="btn "
+                        onClick={() => {
+                          handleLogout();
+                        }}
+                      >
+                        Logout
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -153,7 +164,14 @@ export default function Help() {
                       >
                         <div className="popover-arrow bg-slate-400 border"></div>
                         <div className="p-4 text-sm text-black text-center">
-                          <button className="btn ">Logout</button>
+                          <button
+                            className="btn "
+                            onClick={() => {
+                              handleLogout();
+                            }}
+                          >
+                            Logout
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -171,15 +189,15 @@ export default function Help() {
         <div className="text-center mt-5">
           <h1 className="text-4xl">Oh no ¿Necesitas ayuda?</h1>
           <p className="text-xl font-thin mt-2">
-            porfavor, ponte en contacto con tu equipo de trabajo para que podamos ayudarte
+            Por favor, ponte en contacto con tu equipo de trabajo para que
+            podamos ayudarte
           </p>
         </div>
-        <div className="pt-10 flex w-full overflow-x-auto">
-            
-
-
+        <div className="text-center mt-7">
+          <h2 className="text-lg">Puedes Comunicarte con el Soporte Tecnico</h2>
+          <p>al siguiente correo test@test.com</p>
         </div>
       </div>
     </div>
-  )
+  );
 }

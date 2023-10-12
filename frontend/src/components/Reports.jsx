@@ -3,21 +3,29 @@ import { useNavigate } from "react-router-dom";
 
 import kairo from "../assets/kairo.png";
 import { HelpCircle } from "@styled-icons/boxicons-solid/HelpCircle";
-import { BugReport } from "@styled-icons/material-sharp/BugReport";
 import { DeleteForever } from "@styled-icons/material/DeleteForever";
 import { Refresh } from "@styled-icons/evaicons-solid/Refresh";
-import { PlusCircleFill } from "@styled-icons/bootstrap/PlusCircleFill";
 import { Gear } from "@styled-icons/evil/Gear";
 import { BellRing } from "@styled-icons/boxicons-solid/BellRing";
-import {AppIndicator} from'@styled-icons/bootstrap/AppIndicator'
+import { AppIndicator } from "@styled-icons/bootstrap/AppIndicator";
 import DashboardMenuList from "./DashboardMenuList";
 import BodyReports from "./BodyReports.jsx";
-import {useAuth} from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
+import AddModal from "./AddModal.jsx";
+import Cookies from "js-cookie";
 
 export default function Reports() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const { deleter, setDelete } = useAuth();
+  const handleLogout = () => {
+    try {
+      Cookies.remove("token");
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
   return (
     <div className="w-full h-screen bg-white text-black">
       <div>
@@ -45,12 +53,6 @@ export default function Reports() {
           </div>
           <div className="hidden md:flex md:justify-end">
             <div className="flex w-9/12 h-full justify-between ">
-              <div className="text-center text-black text-xl cursor-pointer py-3 my-auto flex">
-                <PlusCircleFill size={25} color="#FF7221" />
-                <p className="ml-2">
-                  <label htmlFor="anadir">Añadir</label>
-                </p>
-              </div>
               <div
                 className="text-center text-black text-xl cursor-pointer py-3 my-auto flex"
                 onClick={() => {
@@ -60,9 +62,14 @@ export default function Reports() {
                 <Refresh size={25} color="#FF7221" />
                 <p className="ml-2">Refrescar</p>
               </div>
-              <div className="text-center text-black text-xl cursor-pointer py-3 my-auto flex" onClick={() => { setDelete(!deleter) }}>
+              <div
+                className="text-center text-black text-xl cursor-pointer py-3 my-auto flex"
+                onClick={() => {
+                  setDelete(!deleter);
+                }}
+              >
                 <DeleteForever size={30} color="#FF7221" />
-                <p className="ml-2">Eliminar</p>  
+                <p className="ml-2">Eliminar</p>
               </div>
               <div className="h-full my-auto">
                 <img src={kairo} alt="..." className="w-9" />
@@ -75,7 +82,9 @@ export default function Reports() {
               </div>
               <div className="text-center text-black text-xl cursor-pointer py-3 my-auto flex">
                 <HelpCircle size={32} color="#FF7221" />
-                <p className="ml-2" onClick={() => navigate("/help")}>Ayuda</p>
+                <p className="ml-2" onClick={() => navigate("/help")}>
+                  Ayuda
+                </p>
               </div>
             </div>
             <div className="flex w-2/12 h-14 justify-end ">
@@ -100,7 +109,14 @@ export default function Reports() {
                   >
                     <div className="popover-arrow bg-slate-400 border"></div>
                     <div className="p-4 text-sm text-black text-center">
-                      <button className="btn ">Logout</button>
+                      <button
+                        className="btn "
+                        onClick={() => {
+                          handleLogout();
+                        }}
+                      >
+                        Logout
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -162,7 +178,14 @@ export default function Reports() {
                       >
                         <div className="popover-arrow bg-slate-400 border"></div>
                         <div className="p-4 text-sm text-black text-center">
-                          <button className="btn ">Logout</button>
+                          <button
+                            className="btn "
+                            onClick={() => {
+                              handleLogout();
+                            }}
+                          >
+                            Logout
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -178,11 +201,15 @@ export default function Reports() {
 
       <div className="pt-20">
         <div className="text-center mt-5">
-          <h1 className="text-4xl">Panel de Indicadores</h1>
+          <h1 className="text-4xl">Panel de Reportes</h1>
           <p className="text-xl font-thin mt-2">
             Aqui puedes visualizar los Reportes y añadirlos
           </p>
+          <label className="btn bg-orange-500 mt-3" htmlFor="report">
+            Añadir Report
+          </label>
         </div>
+        <AddModal />
         <div className="pt-10 flex w-full overflow-x-auto">
           <table className="table-zebra table px-20">
             <thead>
@@ -192,7 +219,7 @@ export default function Reports() {
                 <th>Indicador</th>
                 <th>Descripcion</th>
                 <th>Fecha</th>
-                {deleter?(<th></th>):null}
+                {deleter ? <th></th> : null}
               </tr>
             </thead>
             <BodyReports />

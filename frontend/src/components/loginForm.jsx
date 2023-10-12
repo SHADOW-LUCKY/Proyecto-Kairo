@@ -15,7 +15,6 @@ export default function LoginForm() {
   const { login, isAuthenticated } = useAuth();
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     login.mutate(data);
     reset();
   });

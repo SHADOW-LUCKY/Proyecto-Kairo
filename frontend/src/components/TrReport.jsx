@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteReportRequest } from "../api/Report.js";
-import {useAuth} from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function TrReport({ report, index }) {
   const { deleter } = useAuth();
@@ -20,15 +20,17 @@ export default function TrReport({ report, index }) {
   return (
     <tr>
       <th># {index + 1}</th>
-      <td>{report.idIndicators} </td>
-      <td>{report.idPersona} </td>
+      <td>{report.user_id} </td>
+      <td>{report.indicators_id} </td>
       <td>{report.description} </td>
-      <td>{report.fecha} </td>
-      {deleter?(<td className="flex gap-3">
-        <button className="btn btn-outline-error" onClick={deleteCategoria}>
-          Eliminar
-        </button>
-      </td>):(null)}
+      <td>{report.fecha_expedited} </td>
+      {deleter ? (
+        <td className="flex gap-3">
+          <button className="btn btn-outline-error" onClick={deleteCategoria}>
+            Eliminar
+          </button>
+        </td>
+      ) : null}
     </tr>
   );
 }
