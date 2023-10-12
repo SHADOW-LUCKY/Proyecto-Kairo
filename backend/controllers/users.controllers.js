@@ -72,8 +72,8 @@ export const Login = async (req, res) => {
   try {
     const UserData = getRequestBody(req);
     const login = await UsersServices.loginUser(UserData);
-    res.cookie("token", login.token);
-    sendSuccessResponse(res, login.user);
+    res.cookie("token", login);
+    sendSuccessResponse(res, "Successful login");
   } catch (error) {
     sendErrorResponse(res, error);
   }
