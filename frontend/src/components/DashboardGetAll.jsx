@@ -1,8 +1,9 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import Dashboardmap from './Dashboardmap'
-
+import {useAuth} from '../contexts/AuthContext'
 export default function DashboardGetAll() {
 
+  const {deleter} = useAuth()
 /* return */
   return (
     <div >
@@ -24,7 +25,11 @@ export default function DashboardGetAll() {
                       <th><div className="py-4">Frecuencia</div></th>    
                       <th><div className="py-4">Cumplimiento </div></th>    
                       <th><div className="py-4">Área</div></th>    
-                       
+                      {deleter?(
+                         <th><div className="py-4"></div></th>  
+                      ):(
+                        null
+                      )}     
                   </thead>
                   <tbody className='getall'>
                       <Dashboardmap /> 

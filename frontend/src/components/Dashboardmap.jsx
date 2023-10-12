@@ -2,49 +2,60 @@ import { useQuery } from '@tanstack/react-query'
 import {getIndicators} from '../api/indicators.js'
 import {Bars} from '@styled-icons/fa-solid/Bars'
 
+// contextos
+import {useContext} from 'react'
+import {useAuth} from '../contexts/AuthContext'
+
 export default function Dashboardmap() {
+  const { deleter } = useAuth()
    /* query */  
-   const { isLoading, isError, data:Indicators , error } = useQuery({
-    queryKey: ["indicators"],
-    queryFn: getIndicators,
-    refetchOnWindowFocus: false,
-  });
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }else if (isError) {
-    return <div>Error: {error.message}</div>;
-  }
+    const { isLoading, isError, data:Indicators , error } = useQuery({
+     queryKey: ["indicators"],
+     queryFn: getIndicators,
+     refetchOnWindowFocus: false,
+   });
+   if (isLoading) {
+     return <div className="">
+         Loading.....
+     </div>;
+   }else if (isError) {
+     return <div>{error.message}</div>;
+   }
   return (
     Indicators.map((item ,index) => (
-      <tr key={index} className=''>
-      <td className='px-0'>
-        <div className="LBORDER h-14 px-4">{item.name}</div>
+      <tr  key={index}>
+      <td className='px-0 '>
+        <div className="LBORDER py-5 text-center h-14 px-4">{item.name}</div>
       </td>
-       <td className='px-0'>
-         <div className=" BORDER h-14">{item.description}</div>
+       <td className='px-0 '>
+        <div className=" BORDER py-5 text-center h-14">{item.description}</div>
        </td>
-       <td className='px-0'>
-         <div className=" BORDER h-14">{item.fecha_init}</div>
+       <td className='px-0 '>
+         <div className=" BORDER py-5 text-center h-14">{item.fecha_init}</div>
        </td>
-       <td className='px-0'>
-         <div className=" BORDER h-14">{item.fecha_end}</div>
+       <td className='px-0 '>
+         <div className=" BORDER py-5 text-center h-14">{item.fecha_end}</div>
        </td>
-       <td className='px-0'>
-         <div className=" BORDER h-14">{item.formula}</div>
+       <td className='px-0 '>
+         <div className=" BORDER py-5 text-center h-14">{item.formula}</div>
        </td>
-       <td className='px-0'>
-         <div className=" BORDER h-14">{item.frecuency}</div>
+       <td className='px-0 '>
+         <div className=" BORDER py-5 text-center h-14">{item.frecuency}</div>
        </td>
-       <td className='px-0'>
-         <div className=" BORDER h-14">{item.completation}%</div>
+       <td className='px-0 '>
+         <div className=" BORDER py-5 text-center h-14">{item.completation}%</div>
        </td>
-       <td className='px-0'>
-          <div className="RBORDER  h-14 px-4">{item.area}</div>
+       <td className='px-0 '>
+          <div className={`${deleter? "BORDER" : "RBORDER"} py-5 text-center  h-14 px-4`}>item.area</div>
        </td>
-     
+       {deleter? <td className='px-0 '>
+          <div className="RBORDER text-center py-2 h-14 px-4">
+            <button className='btn '>Eliminar</button>
+          </div>
+       </td> : null}
      </tr>
       ))
-    
+      
   )
 }
 

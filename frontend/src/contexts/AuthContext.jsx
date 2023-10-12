@@ -4,7 +4,6 @@ import { loginRequest } from "../api/User.js";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext();
-
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -21,15 +20,17 @@ const checkAuthAndSetState = () => {
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     checkAuthAndSetState()
-  );
-
-  const login = useMutation({
-    mutationFn: loginRequest,
-    onSuccess: () => {
-      setIsAuthenticated(true);
-    },
-    onError: (error) => {
-      console.error("Error during login:", error);
+    );
+    
+    const [deleter, setDelete] = useState(false)
+    
+    const login = useMutation({
+      mutationFn: loginRequest,
+      onSuccess: () => {
+        setIsAuthenticated(true);
+      },
+      onError: (error) => {
+        console.error("Error during login:", error);
     },
   });
 
@@ -54,6 +55,8 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated,
     login,
     logout,
+    deleter,
+    setDelete
   };
 
   return (

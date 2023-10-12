@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 /* images */
 import kairo from '../assets/kairo.png'
 import {HelpCircle} from '@styled-icons/boxicons-solid/HelpCircle'
@@ -12,9 +12,12 @@ import {BellRing} from '@styled-icons/boxicons-solid/BellRing'
 import DashboardMenuList from './DashboardMenuList';
 import DashboardGetAll from './DashboardGetAll';
 import DashboardAddModal from './DashboardAddModal';
-
+/*context */
+import {useAuth} from '../contexts/AuthContext'
 /* function */
 export default function Dashboard() {
+  const {setDelete} = useAuth()
+  const {deleter} = useAuth()
     const [open, setOpen] = useState(false)
     return (
       <div className='w-full h-screen bg-white'>
@@ -41,7 +44,7 @@ export default function Dashboard() {
                       <Refresh size={25} color='#FF7221'/>
                       <p className='ml-2'>Refrescar</p>
                     </div>
-                    <div className='text-center text-black text-xl cursor-pointer py-3 my-auto flex'>
+                    <div className='text-center text-black text-xl cursor-pointer py-3 my-auto flex' onClick={() => setDelete(!deleter)}>
                       <DeleteForever size={30} color='#FF7221'/>
                       <p className='ml-2'>Eliminar</p>
                     </div>
@@ -113,6 +116,9 @@ export default function Dashboard() {
           </div>
         </div>
         <DashboardGetAll/>
+       <div className='flex justify-center'>
+        <button className='bg-orange-500 py-4 px-10 rounded-full' ><label htmlFor="anadir">Añadir Elementos</label></button>
+       </div>
       </div>
         <DashboardAddModal/>
       </div>
