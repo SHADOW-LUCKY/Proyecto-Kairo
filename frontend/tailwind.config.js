@@ -7,5 +7,8 @@ module.exports = {
     extend: {},
   },
   plugins: [require("rippleui"),require('tailwindcss-animated')],
+  rippleui: {
+		removeThemes: ["dark"],
+	},
 }
 
