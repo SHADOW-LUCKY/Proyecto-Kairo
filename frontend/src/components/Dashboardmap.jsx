@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getIndicators, deleteIndicatorsRequest } from "../api/indicators.js";
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 // contextos
 import { useAuth } from "../contexts/AuthContext";
@@ -35,6 +36,7 @@ export default function Dashboardmap() {
   } else if (isError) {
     return <div>{error.message}</div>;
   }
+  
 
   return Indicators.map((item, index) => (
     <tr key={index}>
@@ -60,8 +62,10 @@ export default function Dashboardmap() {
         <div className=" BORDER py-5 text-center h-14">{item.frecuency}</div>
       </td>
       <td className="px-0 ">
-        <div className=" BORDER py-5 text-center h-14">
-          {item.completation}%
+        <div className=" BORDER  text-center h-14">
+        <CircularProgress value={item.completation} size='50px'>
+             <CircularProgressLabel>{item.completation}%</CircularProgressLabel>
+           </CircularProgress>
         </div>
       </td>
       <td className="px-0 ">

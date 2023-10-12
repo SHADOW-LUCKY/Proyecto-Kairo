@@ -46,12 +46,6 @@ export default function Help() {
           </div>
           <div className="hidden md:flex md:justify-end">
             <div className="flex w-9/12 h-full justify-between ">
-              <div className="text-center text-black text-xl cursor-pointer py-3 my-auto flex">
-                <PlusCircleFill size={25} color="#FF7221" />
-                <p className="ml-2">
-                  <label htmlFor="anadir">Añadir</label>
-                </p>
-              </div>
               <div
                 className="text-center text-black text-xl cursor-pointer py-3 my-auto flex"
                 onClick={() => {
@@ -175,15 +169,15 @@ export default function Help() {
 
       <div className="pt-20">
         <div className="text-center mt-5">
-          <h1 className="text-4xl">Panel de Indicadores</h1>
+          <h1 className="text-4xl">Oh no ¿Necesitas ayuda?</h1>
           <p className="text-xl font-thin mt-2">
-            Aqui puedes visualizar los Reportes y añadirlos
+            porfavor, ponte en contacto con tu equipo de trabajo para que podamos ayudarte
           </p>
         </div>
         <div className="pt-10 flex w-full overflow-x-auto">
-         
-           
-        
+            
+
+
         </div>
       </div>
     </div>
